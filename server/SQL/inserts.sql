@@ -89,10 +89,10 @@ INSERT INTO pagos_multas (id_sub, id_prod, id_contrato, fecha_pago, monto_euros,
 (3, 3, 8, '2024-03-06', 500.00, 'MEM'),
 (2, 3, 9, '2024-05-17', 500.00, 'MEM'),
 
-(1, 1, 2, '2023-02-05', , 'COM'),  -- Productor 1 (CB) paga 1% de 175.00
-(2, 1, 3, '2024-02-05', , 'COM'), -- Productor 1 (CA) paga 0.5% de 65.00
-(2, 2, 7, '2024-02-05', , 'COM'),  -- Productor 2 (KA) paga 0.25% de 100.00
-(3, 3, 8, '2024-04-05', , 'COM'),   -- Productor 3 (CG) paga 5% de 20.00
+--(1, 1, 2, '2023-02-05', , 'COM'),  -- Productor 1 (CB) paga 1% de 175.00
+--(2, 1, 3, '2024-02-05', , 'COM'), -- Productor 1 (CA) paga 0.5% de 65.00
+--(2, 2, 7, '2024-02-05', , 'COM'),  -- Productor 2 (KA) paga 0.25% de 100.00
+--(3, 3, 8, '2024-04-05', , 'COM'),   -- Productor 3 (CG) paga 5% de 20.00
 
 (3, 2, 1, '2023-01-10', 100.00, 'MUL'), -- Multa por pago tardío (20% de ventas)
 (1, 1, 2, '2023-02-10', 40.00, 'MUL'),  -- Multa por no pagar a tiempo (20% de ventas)
