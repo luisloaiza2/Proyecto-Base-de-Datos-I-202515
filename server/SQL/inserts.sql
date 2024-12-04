@@ -39,6 +39,26 @@ INSERT INTO colores (codigo_color, nombre, descripcion) VALUES
 
 --INSERTS DE SIGNIFICADOS
 
+INSERT INTO significados (tipo, descripcion) VALUES
+('sent', 'amor'),
+('sent', 'pasión'),
+('sent', 'alegría'),
+('sent', 'dulzura'),
+('sent', 'serenidad'),
+('sent', 'pureza'),
+('sent', 'entusiasmo'),
+('sent', 'gratitud'),
+('sent', 'esperanza'),
+('sent', 'nostalgia'),
+('ocas', 'aniversario'),
+('ocas', 'cortejo'),
+('ocas', 'cumpleaños'),
+('ocas', 'felicitaciones'),
+('ocas', 'dia de la madre'),
+('ocas', 'funeral'),
+('ocas', 'graduacion'),
+('ocas', 'matrimonio'),
+('ocas', 'consuelo');
 --INSERTS DE SUBASTADORAS
 
 INSERT INTO subastadoras (nombre_sub, id_pais) VALUES 
