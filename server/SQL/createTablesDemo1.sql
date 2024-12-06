@@ -53,12 +53,13 @@ CREATE TABLE contratos(
 	id_contrato SMALLINT DEFAULT nextval('seq_contratos') NOT NULL UNIQUE,
 	fecha_contrato DATE NOT NULL,
 	clasificacion VARCHAR(2) NOT NULL,
-	porc_total_prod NUMERIC(4,2) NOT NULL,
+	porc_total_prod NUMERIC(5,2) NOT NULL,
 	cancelado VARCHAR(2),
 	id_contrato_padre SMALLINT references contratos(id_contrato),
 	CONSTRAINT check_clasificacion CHECK (clasificacion in('CA','CB','CC','CG','KA')),
 	CONSTRAINT check_cancelado CHECK (cancelado in ('SI','NO')),
-	CONSTRAINT pk_contratos PRIMARY KEY (id_sub,id_prod,id_contrato)
+	CONSTRAINT pk_contratos PRIMARY KEY (id_sub,id_prod,id_contrato),
+	CONSTRAINT check_porcentaje CHECK (porc_total_prod>0 AND porc_total_prod<=100)
 );
 
 CREATE TABLE pagos_multas(
@@ -67,10 +68,11 @@ CREATE TABLE pagos_multas(
 	id_contrato SMALLINT NOT NULL,
 	id_pagos SMALLINT DEFAULT nextval('seq_pagos') NOT NULL,
 	fecha_pago DATE NOT NULL,
-	monto_euros NUMERIC(6,2) NOT NULL,
+	monto_euros FLOAT NOT NULL,
 	tipo VARCHAR(3) NOT NULL,
 	CONSTRAINT check_pagos CHECK(tipo in('MEM','MUL','COM')),
-	CONSTRAINT pk_pagos PRIMARY KEY (id_sub,id_prod,id_contrato,id_pagos)
+	CONSTRAINT pk_pagos PRIMARY KEY (id_sub,id_prod,id_contrato,id_pagos),
+	CONSTRAINT check_monto CHECK(monto_euros>0)
 );
 
 CREATE TABLE afiliacion(
@@ -86,7 +88,7 @@ CREATE TABLE contactos_empleados(
 	primer_apellido VARCHAR(20) NOT NULL,
 	seg_apellido VARCHAR(20) NOT NULL,
 	doc_id_rep NUMERIC(10) NOT NULL UNIQUE,
-	telef_rep VARCHAR(12) NOT NULL UNIQUE,
+	telef_rep VARCHAR(15) NOT NULL UNIQUE,
 	CONSTRAINT pk_contacto_emp PRIMARY KEY (id_floristeria, id_representante)
 );
 
@@ -120,11 +122,12 @@ CREATE TABLE det_contratos(
 CREATE TABLE facturas_subastas(
 	num_factura NUMERIC(12) CONSTRAINT pk_facturasub PRIMARY KEY,
 	fecha_emision DATE NOT NULL,
-	total NUMERIC(6,2) NOT NULL,
+	total FLOAT NOT NULL,
 	id_sub SMALLINT NOT NULL,
 	id_floristeria SMALLINT NOT NULL,
 	envio VARCHAR(2),
-	CONSTRAINT check_envio CHECK (envio in('SI','NO'))
+	CONSTRAINT check_envio CHECK (envio in('SI','NO')),
+	CONSTRAINT check_total_factura CHECK (total>0)
 );
 
 CREATE TABLE lotes_flor( 
@@ -132,13 +135,15 @@ CREATE TABLE lotes_flor(
 	cantidad NUMERIC(3) NOT NULL,
 	precio_inicial NUMERIC(6,2) NOT NULL,
 	BI NUMERIC(3,2) NOT NULL,
-	precio_final NUMERIC(6,2) NOT NULL,
+	precio_final FLOAT NOT NULL,
 	id_sub SMALLINT NOT NULL,
 	id_prod SMALLINT NOT NULL,
 	id_contrato SMALLINT NOT NULL,
 	vbn SMALLINT NOT NULL,
 	num_factura NUMERIC(12) NOT NULL,
-	CONSTRAINT check_bi CHECK(BI >= 0.5 AND BI <=1)
+	CONSTRAINT check_bi CHECK(BI >= 0.5 AND BI <=1),
+	CONSTRAINT check_precio_inicial CHECK(precio_inicial>0),
+	CONSTRAINT check_precio_final CHECK(precio_final>0)
 );
 
 CREATE TABLE catalogos_floristerias(
@@ -154,18 +159,22 @@ CREATE TABLE historicos_precio(
 	id_floristeria SMALLINT NOT NULL,
 	id_catalogo SMALLINT NOT NULL,
 	fecha_inicio DATE NOT NULL,
-	precio_unitario NUMERIC(4,2) NOT NULL,
-	tamano_tallo NUMERIC(4,2),
+	precio_unitario NUMERIC(5,2) NOT NULL,
+	tamano_tallo NUMERIC(5,2),
 	fecha_final DATE,
-	CONSTRAINT pk_historico_precio PRIMARY KEY (id_floristeria,id_catalogo,fecha_inicio)
+	CONSTRAINT pk_historico_precio PRIMARY KEY (id_floristeria,id_catalogo,fecha_inicio),
+	CONSTRAINT check_precio_unitario_flor CHECK(precio_unitario>0),
+	CONSTRAINT check_tamano_tallo CHECK(tamano_tallo>0)
 );
 
 CREATE TABLE bouquets(
 	id_floristeria SMALLINT NOT NULL,
 	id_catalogo SMALLINT NOT NULL,
 	id_bouquet SMALLINT DEFAULT nextval('seq_bouquet') NOT NULL,
-	cantidad NUMERIC(2) NOT NULL,
+	cantidad NUMERIC(3) NOT NULL,
 	descripcion VARCHAR(300),
-	tamano_tallo NUMERIC(4,2),
-	CONSTRAINT pk_bouquet PRIMARY KEY (id_floristeria, id_catalogo, id_bouquet)
+	tamano_tallo NUMERIC(5,2),
+	CONSTRAINT pk_bouquet PRIMARY KEY (id_floristeria, id_catalogo, id_bouquet),
+	CONSTRAINT check_tamano_tallo CHECK(tamano_tallo>0),
+	CONSTRAINT check_cantidad CHECK (cantidad>0)
 );
