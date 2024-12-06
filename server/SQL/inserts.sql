@@ -204,16 +204,16 @@ INSERT INTO facturas_subastas (num_factura, fecha_emision, total, id_sub, id_flo
 --INSERTS DE CATALOGOS FLORISTERIAS
 
 INSERT INTO catalogos_floristerias (id_floristeria, nombre, id_flor_corte, codigo_color) VALUES
-(1, 'Arreglo Floral Tropical', 401, '008000'),  -- Verde
-(1, 'Bouquet Primavera', 101, 'FF0000'),  -- Rojo
-(2, 'Ramo de Rosas', 102, 'FFC0CB'),      -- Rosa
-(3, 'Arreglo de Girasoles', 201, 'FFFF00'),  -- Amarillo
-(3, 'Bouquet de Freesias', 502, '0000FF'),    -- Azul
-(4, 'Centro de Mesa', 202, 'FFA500'),     -- Naranja
-(4, 'Ramo de Hortensias', 402, 'E6E6FA'),     -- Lavanda
-(5, 'Ramo de Lirios', 301, '800080'),     -- Púrpura
-(5, 'Ramo de Claveles', 501, 'A52A2A'),      -- Marrón
-(6, 'Bouquet de Margaritas', 302, 'FFFFFF'); -- Blanco
+(1, 'Salina', 7, '008000'),  -- Verde
+(1, 'Bengala', 2, 'ca1b1b'),  -- Rojo
+(2, 'Darling', 1, 'c5388b'),      -- Rosa
+(3, 'Teddy Bear', 5, 'fbf500'),  -- Amarillo
+(3, 'Blue blush', 7, '0000ff'),    -- Azul
+(4, 'Avalanche', 1, 'ffffff'),     -- Blanca
+(4, 'Clarisa', 8, 'e6e6fa'),     -- Lavanda
+(5, 'Lirio amatista', 3, '800080'),     -- Púrpura
+(5, 'Cairo', 2, 'a52a2a'),      -- Marrón
+(6, 'Margarita clasica', 6, 'ffffff'); -- Blanco
 
 --INSERTS DE HISTORICOS PRECIOS 
 
