@@ -144,10 +144,10 @@ INSERT INTO contactos_empleados (id_floristeria, primer_nombre_rep, primer_apell
 (3, 'Carlos', 'Fernández', 'Sánchez', 3456789012, '01123456789'),  -- Argentina
 (4, 'Ana', 'García', 'Ramírez', 4567890123, '005712345678'),  -- Colombia
 (5, 'Luis', 'Hernández', 'Díaz', 5678901234, '005212345678'),  -- México
-(6, 'Laura', 'Jiménez', 'Cruz', 6789012345, '0034912345678'),  -- España
+(6, 'Laura', 'Jiménez', 'Cruz', 6789012345, '003491234567'),  -- España
 (2, 'Pedro', 'Morales', 'Vásquez', 7890123456, '004412345679'),  -- Inglaterra
 (4, 'Sofía', 'Rojas', 'Torres', 8901234567, '005712345679'),  -- Colombia
-(6, 'Javier', 'Salinas', 'Paredes', 9012345678, '0034912345679'),  -- España
+(6, 'Javier', 'Salinas', 'Paredes', 9012345678, '034912345679'),  -- España
 (1, 'Isabel', 'Mendoza', 'López', 9876543210, '001234567891');  -- USA
 
 --INSERTS DE ENLACES
